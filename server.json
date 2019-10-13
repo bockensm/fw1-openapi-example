@@ -1,0 +1,11 @@
+{
+    "web":{
+        "webroot":"app",
+        "rewrites":{
+            "enable":true
+        }
+    },
+    "app":{
+        "cfengine":"adobe@2018"
+    }
+}
