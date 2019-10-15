@@ -1,0 +1,16 @@
+{
+	"properties": {
+		"name": {
+			"type": "string"
+		},
+		"breed": {
+			"type": "string"
+		},
+		"sex": {
+			"type": "string"
+		},
+		"age": {
+			"type": "number"
+		}
+	}
+}

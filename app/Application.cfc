@@ -1,4 +1,6 @@
 component extends="framework.one" {
+	this.mappings["/testbox"] = expandPath("./testbox/");
+
 	variables.framework = {
 		defaultSection: "main",
 		defaultItem: "default",
@@ -7,11 +9,16 @@ component extends="framework.one" {
 			{ "$GET/api/dogs": "/dogs/index" },
 			{ "$POST/api/dogs": "/dogs/create" },
 			{ "$GET/api/dogs/{id:[0-9]+}": "/dogs/show/id/:id" },
+			{ "$PATCH/api/dogs/{id:[0-9]+}": "/dogs/update/id/:id" },
 			{ "$DELETE/api/dogs/:id": "/dogs/destroy/id/:id" },
 
 			{ "/api/cats": "/cats/index" },
 
-			{ "$GET/api": "/openAPI:main/default" }
+			{ "$RESOURCES": { resources: "fish,gerbils", pathRoot: "/api" } },
+
+			{ "$GET/api": "/openAPI:main/default" },
+
+			{ "*": "/main/error" }
 		],
 		generateSES: false,
 		SESOmitIndex: false,
@@ -27,4 +34,10 @@ component extends="framework.one" {
 			}
 		}
 	};
+
+
+	function onError() {
+		writeDump(arguments);
+		abort;
+	}
 }

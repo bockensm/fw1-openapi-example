@@ -1,0 +1,10 @@
+{
+	"201": {
+		"description": "Dog added to the data store",
+		"type": "object",
+		"item": "#/components/schemas/dog"
+	},
+	"422": {
+		"description": "Invalid data provided"
+	}
+}

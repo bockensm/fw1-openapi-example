@@ -8,20 +8,55 @@ component accessors="true" {
 
 	/**
 	 * Displays a list of good bois
+	 * @param-name { "type": "string", "required" : "false", "in" : "query", "hint": "Filters the list to match dogs with a specific name" }
 	 * @param-breed { "type": "string", "required" : "false", "in" : "query", "hint": "Filters the list to match dogs with a specific breed" }
 	 * @param-sex { "type": "string", "required" : "false", "in" : "query", "hint": "Filters the list to match dogs of a certain sex" }
-	 * @param-name { "type": "string", "required" : "false", "in" : "query", "hint": "Filters the list to match dogs with a specific name" }
+	 * @responses /components/responses/dogs.list.response.json
 	 * @tags [ "dogs" ]
 	 */
-	public void function index() {
+	public function index() {
+		var dogs = [
+			{
+				"name": "Fido",
+				"breed": "Mutt",
+				"sex": "M"
+			},
+			{
+				"name": "Rover",
+				"breed": "Black Labrador",
+				"sex": "M"
+			},
+			{
+				"name": "Molly",
+				"breed": "Chihuahua",
+				"sex": "F"
+			}
+		];
+
+		return variables.framework.renderData()
+			.type("json")
+			.data(dogs)
+			.statusCode(200);
 	}
 
 
 	/**
 	 * Adds a good boi to the data store
+	 * @x-parameters /components/requests/dogs.add.parameters.json
+	 * @responses /components/responses/dogs.add.responses.json
 	 * @tags [ "dogs" ]
 	 */
-	public void function create() {
+	public function create(required struct rc) {
+		param rc.name = "";
+		param rc.breed = "test";
+
+		return variables.framework.renderData()
+			.type("json")
+			.data({
+				"name": rc.name,
+				"breed": rc.breed
+			})
+			.statusCode(201);
 	}
 
 
@@ -36,10 +71,20 @@ component accessors="true" {
 
 
 	/**
-	 * :(
-	 * @param-id { "type": "numeric", "required" : "true", "in" : "path", "hint": "Tag ID for the dog" }
+	 * Updates a good boi in the data store
+	 * @response-200 { "description" : "Dog updated in the data store" }
 	 * @tags [ "dogs" ]
 	 */
-	public void function destroy() {
+	public function update() {
+	}
+
+
+	/**
+	 * :(
+	 * @param-id { "type": "numeric", "required" : "true", "in" : "path", "hint": "Tag ID for the dog" }
+	 * @response-204 { "description" : "Dog removed from the data store" }
+	 * @tags [ "dogs" ]
+	 */
+	public function destroy() {
 	}
 }

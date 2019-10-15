@@ -2,7 +2,7 @@ component {
 	function configure() {
 		return {
 			"info": {
-				"title": "My API"
+				"title": "OpenAPI Example"
 			}
 		};
 	}

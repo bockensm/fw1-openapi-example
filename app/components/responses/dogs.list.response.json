@@ -1,0 +1,7 @@
+{
+	"200": {
+		"description": "A list of dogs",
+		"type": "array",
+		"item": "#/components/schemas/dog"
+	}
+}

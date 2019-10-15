@@ -2,8 +2,12 @@
     "dependencies":{
         "fw1":"4.2.0"
     },
+    "devDependencies":{
+        "testbox":"^3.1.0+339"
+    },
     "installPaths":{
-		"fw1":"app/framework/",
-		"fw1-openapi":"app/subsystems/openAPI"
+        "fw1":"app/framework/",
+        "fw1-openapi":"app/subsystems/openAPI",
+        "testbox":"app/testbox/"
     }
 }
